@@ -7,10 +7,10 @@ app = Flask(__name__)
 # Serving the index file
 @app.route('/', methods=['GET'])
 def index():
-  return generate_card_html('Random Card')
+  return generate_html('Random Card')
 
 
-def generate_card_html(title):
+def generate_html(title):
     bob = True
     return f'''
     <html>
@@ -19,7 +19,7 @@ def generate_card_html(title):
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
-        <style>{get_styles()}</style>
+        <style>{generate_styles()}</style>
         <div class="centered">
             <div id="theCard" class="card suit-hearts">
             <p id="cardContent">A</p>
@@ -30,7 +30,7 @@ def generate_card_html(title):
     </html>
     '''
 
-def get_styles():
+def generate_styles():
     return r'''
         @charset "UTF-8";
         body {
